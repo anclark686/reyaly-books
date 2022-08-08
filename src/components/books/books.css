@@ -1,0 +1,39 @@
+.details-card, .list-card, .add-card, .card {
+    background-color: var(--beige);
+    color: var(--darkbrown);
+    max-width: 75%;
+    margin: 20px auto;
+    padding: 20px;
+
+}
+
+.add-card {
+    align-items: center;
+}
+
+.details-card h1, h3{
+    text-transform: capitalize;
+}
+
+.list-card a, .card a {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+
+#custom-switch, #read-switch, #favorite-switch {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    box-shadow: none !important;
+    color: aliceblue;
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e");
+}
+
+
+
+#custom-switch:checked, #read-switch:checked, #favorite-switch:checked {
+    background-color: var(--green);
+    border-color: var(--green);
+    box-shadow: none !important;
+}
+
