@@ -35,11 +35,11 @@ export const Login = () => {
                     <p>{msg}</p>
 
                     <Form.Group className="log-form">
-                        <Form.Label className="label">Email or Username</Form.Label>
+                        <Form.Label className="label">Email Address</Form.Label>
                         <Form.Control  
                             type="text" 
                             className="form-med" 
-                            placeholder="Username" 
+                            placeholder="Email Address" 
                             value={email} 
                             onChange={(e) => setEmail(e.target.value)} 
                         />
@@ -50,7 +50,7 @@ export const Login = () => {
                         <Form.Control  
                             type="password" 
                             className="form-med" 
-                            placeholder="******" 
+                            placeholder="Password" 
                             value={password} 
                             onChange={(e) => setPassword(e.target.value)} 
                         />

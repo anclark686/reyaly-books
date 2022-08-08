@@ -54,7 +54,7 @@ export const Register = () => {
                             <Form.Control 
                                 type="text" 
                                 className="form-med"
-                                placeholder="Email" 
+                                placeholder="Email Address" 
                                 value={email} 
                                 onChange={(e) => setEmail(e.target.value)} 
                             />
@@ -65,7 +65,7 @@ export const Register = () => {
                             <Form.Control 
                                 type="password" 
                                 className="form-med" 
-                                placeholder="******" 
+                                placeholder="Password" 
                                 value={password} 
                                 onChange={(e) => setPassword(e.target.value)} 
                             />
@@ -76,7 +76,7 @@ export const Register = () => {
                             <Form.Control 
                                 type="password" 
                                 className="form-med"
-                                placeholder="******" 
+                                placeholder="Confirm Password" 
                                 value={confPassword} 
                                 onChange={(e) => setConfPassword(e.target.value)} 
                             />

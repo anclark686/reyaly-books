@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
  
 const Navigation = () => {
 
@@ -8,7 +8,7 @@ const Navigation = () => {
     return (
         <Navbar className="navbar" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">Reyaly Books</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
