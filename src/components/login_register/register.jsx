@@ -16,7 +16,7 @@ export const Register = () => {
     const Register = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://reyaly-books.herokuapp.com/users', {
+            await axios.post('https://reyaly-books-backend.herokuapp.com/users', {
                 name: name,
                 email: email,
                 password: password,

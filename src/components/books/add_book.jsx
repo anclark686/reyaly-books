@@ -51,7 +51,7 @@ export const AddBook = () => {
 
       try {
         await Axios.post(
-          "https://reyaly-books.herokuapp.com/addBook", book
+          "https://reyaly-books-backend.herokuapp.com/addBook", book
         ).then((res) => {
           console.log(res.data)
           if (res.data === "Your book has been added!"){

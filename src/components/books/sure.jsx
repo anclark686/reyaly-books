@@ -12,7 +12,7 @@ export const YouSure = () => {
     const deleteBook = async (req, res) => {
         console.log("delete")
         try {
-          await Axios.delete("https://reyaly-books.herokuapp.com/delete", {
+          await Axios.delete("https://reyaly-books-backend.herokuapp.com/delete", {
             data: {id: book.id}
           }).then((res) => {
             console.log(res.data)

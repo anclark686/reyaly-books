@@ -15,7 +15,7 @@ export const List = () => {
     
 const getBooks = async () => {
   // console.log(userProfile)
-    const response = await axiosJWT.post('https://reyaly-books.herokuapp.com/books', {
+    const response = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/books', {
         user: email,
         headers: {
             Authorization: `Bearer ${token}`

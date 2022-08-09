@@ -15,7 +15,7 @@ export const FavList = () => {
     
 const getBooks = async () => {
   // console.log(userProfile)
-    const response = await axiosJWT.post('https://reyaly-books.herokuapp.com/fav', {
+    const response = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/fav', {
         user: email,
         headers: {
             Authorization: `Bearer ${token}`

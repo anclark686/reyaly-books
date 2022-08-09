@@ -15,8 +15,8 @@ const Navigation = () => {
 
     const Logout = async () => {
         try {
-            await axios.delete('https://reyaly-books.herokuapp.com/logout');
-            if (window.location.href !== "https://reyaly-books-main.herokuapp.com/") {
+            await axios.delete('https://reyaly-books-backend.herokuapp.com/logout');
+            if (window.location.href !== "https://reyaly-books.herokuapp.com/") {
                 navigate("/");
             } else {
                 window.location.reload()

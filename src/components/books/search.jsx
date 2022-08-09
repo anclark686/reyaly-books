@@ -18,7 +18,7 @@ export const SearchBar = () => {
     const searchDB = async (search, searchVal) => {
         console.log(searchVal)
         console.log(search)
-        const results = await axiosJWT.post('https://reyaly-books.herokuapp.com/search', {
+        const results = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/search', {
             user: email,
             filter: search,
             value: searchVal,

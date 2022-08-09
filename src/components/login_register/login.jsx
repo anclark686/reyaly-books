@@ -14,7 +14,7 @@ export const Login = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://reyaly-books.herokuapp.com/login', {
+            await axios.post('https://reyaly-books-backend.herokuapp.com/login', {
                 email: email,
                 password: password
             });

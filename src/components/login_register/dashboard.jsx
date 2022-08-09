@@ -22,7 +22,7 @@ export const Dashboard = () => {
  
 
     const stats = async () => {
-        const getBooks = await axiosJWT.post('https://reyaly-books.herokuapp.com/books', {
+        const getBooks = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/books', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`
@@ -30,7 +30,7 @@ export const Dashboard = () => {
         })
         setNumBooks(getBooks.data.length)
 
-        const getUnread = await axiosJWT.post('https://reyaly-books.herokuapp.com/wish', {
+        const getUnread = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/wish', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ export const Dashboard = () => {
         })
         setNumUnread(getUnread.data.length)
 
-        const getFaves = await axiosJWT.post('https://reyaly-books.herokuapp.com/fav', {
+        const getFaves = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/fav', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`

@@ -72,7 +72,7 @@ export const EditBook = () => {
       book.favorite = favorite ? favorite : book.favorite
       try {
         await Axios.post(
-          "https://reyaly-books.herokuapp.com/edit",
+          "https://reyaly-books-backend.herokuapp.com/edit",
           {
             id: book.id,
             title: book.title,
