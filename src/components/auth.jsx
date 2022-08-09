@@ -14,6 +14,7 @@ export const Jwt_auth = () => {
     const refreshToken = async () => {
         try {
             const response = await axios.get('https://reyaly-books-backend.herokuapp.com/token');
+            console.log(response)
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setId(decoded.userId);
