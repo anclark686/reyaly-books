@@ -22,6 +22,7 @@ export const Login = () => {
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
+                console.log(error)
             }
         }
     }
