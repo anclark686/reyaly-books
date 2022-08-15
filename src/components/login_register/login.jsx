@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "./log_reg_nav";
 import { Form, Button, Card } from "react-bootstrap"
+import Cookies from 'universal-cookie';
 
  
 export const Login = () => {
@@ -10,6 +11,7 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
+    const cookies = new Cookies();
  
     const Auth = async (e) => {
         e.preventDefault();
@@ -18,7 +20,8 @@ export const Login = () => {
                 email: email,
                 password: password
             });
-            console.log(response)
+            cookies.set("refreshToken", response.data)
+            console.log(cookies.get('refreshToken'))
             // navigate("/dashboard");
         } catch (error) {
             if (error.response) {
