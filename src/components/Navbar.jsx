@@ -20,6 +20,7 @@ const Navigation = () => {
             await axios.delete('https://reyaly-books-backend.herokuapp.com/logout', {
                 refreshToken: cookies.get('refreshToken')
             });
+            cookies.remove("refreshToken")
             if (window.location.href !== "https://reyaly-books.herokuapp.com/") {
                 navigate("/");
             } else {
