@@ -26,6 +26,7 @@ export const Jwt_auth = () => {
             if (error.response.status !== 401) {
                 console.log(error)
             } else {
+                console.log(error)
                 navigate("/")
             }
             // else if (pageName !== "login" || pageName !== "register") {
