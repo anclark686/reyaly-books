@@ -14,11 +14,12 @@ export const Login = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://reyaly-books-backend.herokuapp.com/login', {
+            const response = await axios.post('https://reyaly-books-backend.herokuapp.com/login', {
                 email: email,
                 password: password
             });
-            navigate("/dashboard");
+            console.log(response)
+            // navigate("/dashboard");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
