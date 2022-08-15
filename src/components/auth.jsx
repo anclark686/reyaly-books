@@ -2,6 +2,7 @@ import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 export const Jwt_auth = () => {
     const [id, setId] = useState('');
@@ -10,10 +11,13 @@ export const Jwt_auth = () => {
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
     const navigate = useNavigate();
+    const cookies = new Cookies();
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get('https://reyaly-books-backend.herokuapp.com/token');
+            const response = await axios.post('https://reyaly-books-backend.herokuapp.com/token', {
+                refreshToken: cookies.get('refreshToken')
+            });
             console.log(response)
             // setToken(response.data.accessToken);
             // const decoded = jwt_decode(response.data.accessToken);
@@ -26,7 +30,6 @@ export const Jwt_auth = () => {
             if (error.response.status !== 401) {
                 console.log(error)
             } else {
-                console.log(error)
                 navigate("/")
             }
             // else if (pageName !== "login" || pageName !== "register") {
@@ -40,7 +43,9 @@ export const Jwt_auth = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('https://reyaly-books-backend.herokuapp.com/token');
+            const response = await axios.post('https://reyaly-books-backend.herokuapp.com/token', {
+                refreshToken: cookies.get('refreshToken')
+            });
             console.log(response)
             // config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             // setToken(response.data.accessToken);

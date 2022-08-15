@@ -22,7 +22,7 @@ export const Login = () => {
             });
             cookies.set("refreshToken", response.data)
             console.log(cookies.get('refreshToken'))
-            // navigate("/dashboard");
+            navigate("/dashboard");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
