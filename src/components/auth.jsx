@@ -18,11 +18,8 @@ export const Jwt_auth = () => {
             const response = await axios.post('https://reyaly-books-backend.herokuapp.com/token', {
                 refreshToken: cookies.get('refreshToken')
             });
-            console.log(response)
-            console.log(cookies.get('refreshToken'))
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
-            console.log(decoded)
             setId(decoded.userId);
             setName(decoded.name);
             setEmail(decoded.email);

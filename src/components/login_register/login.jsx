@@ -21,7 +21,6 @@ export const Login = () => {
                 password: password
             });
             cookies.set("refreshToken", response.data)
-            console.log(cookies.get('refreshToken'))
             navigate("/dashboard");
         } catch (error) {
             if (error.response) {

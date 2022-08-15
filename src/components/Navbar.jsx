@@ -17,7 +17,7 @@ const Navigation = () => {
 
     const Logout = async () => {
         try {
-            await axios.delete('https://reyaly-books-backend.herokuapp.com/logout', {
+            await axios.post('https://reyaly-books-backend.herokuapp.com/logout', {
                 refreshToken: cookies.get('refreshToken')
             });
             cookies.remove("refreshToken")
