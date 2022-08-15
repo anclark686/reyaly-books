@@ -15,13 +15,13 @@ export const Jwt_auth = () => {
         try {
             const response = await axios.get('https://reyaly-books-backend.herokuapp.com/token');
             console.log(response)
-            // setToken(response.data.accessToken);
-            // const decoded = jwt_decode(response.data.accessToken);
-            // console.log(decoded)
-            // setId(decoded.userId);
-            // setName(decoded.name);
-            // setEmail(decoded.email);
-            // setExpire(decoded.exp);
+            setToken(response);
+            const decoded = jwt_decode(response);
+            console.log(decoded)
+            setId(decoded.userId);
+            setName(decoded.name);
+            setEmail(decoded.email);
+            setExpire(decoded.exp);
         } catch (error) {
             if (error.response.status !== 401) {
                 console.log(error)
