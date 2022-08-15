@@ -40,13 +40,14 @@ export const Jwt_auth = () => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
             const response = await axios.get('https://reyaly-books-backend.herokuapp.com/token');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setId(decoded.userId);
-            setName(decoded.name);
-            setEmail(decoded.email);
-            setExpire(decoded.exp);
+            console.log(response)
+            // config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+            // setToken(response.data.accessToken);
+            // const decoded = jwt_decode(response.data.accessToken);
+            // setId(decoded.userId);
+            // setName(decoded.name);
+            // setEmail(decoded.email);
+            // setExpire(decoded.exp);
         }
         return config;
     }, (error) => {
