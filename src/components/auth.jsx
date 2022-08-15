@@ -45,8 +45,6 @@ export const Jwt_auth = () => {
             const response = await axios.post('https://reyaly-books-backend.herokuapp.com/token', {
                 refreshToken: cookies.get('refreshToken')
             });
-            console.log(cookies.get('refreshToken'))
-            console.log(response)
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
