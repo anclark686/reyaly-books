@@ -60,10 +60,10 @@ const Home = () => {
                 <p>Reyaly Books is a place you can go to log and note all of your 
                     favorite, and not so favorite books. You have the functionality
                     to track which books you have and havent read, and can keep 
-                    meaningful notes for each book. For books that you haven't read
-                    our handy Wish List portion can keep track of this for you. 
-                    You can also select the relevant Genre, to use in our search function.
-                    i hope that you have as much fun using Reyaly Books, as I had making it</p>
+                    meaningful notes for each book. For books that you haven't read,
+                    our handy Wish-List portion can keep track of this for you. 
+                    You can also select the relevant genre to use in our search function.
+                    I hope that you have as much fun using Reyaly Books, as I had making it</p>
                     <p>~ANC~</p>
             </Card>
         </div>
