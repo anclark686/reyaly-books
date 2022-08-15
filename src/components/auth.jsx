@@ -17,6 +17,7 @@ export const Jwt_auth = () => {
             console.log(response)
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
+            console.log(decoded)
             setId(decoded.userId);
             setName(decoded.name);
             setEmail(decoded.email);
