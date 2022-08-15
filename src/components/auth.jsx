@@ -19,6 +19,7 @@ export const Jwt_auth = () => {
                 refreshToken: cookies.get('refreshToken')
             });
             console.log(response)
+            console.log(cookies.get('refreshToken'))
             // setToken(response.data.accessToken);
             // const decoded = jwt_decode(response.data.accessToken);
             // console.log(decoded)
@@ -29,6 +30,7 @@ export const Jwt_auth = () => {
         } catch (error) {
             if (error.response.status !== 401) {
                 console.log(error)
+                console.log(cookies.get('refreshToken'))
             } else {
                 navigate("/")
             }
@@ -46,6 +48,7 @@ export const Jwt_auth = () => {
             const response = await axios.post('https://reyaly-books-backend.herokuapp.com/token', {
                 refreshToken: cookies.get('refreshToken')
             });
+            console.log(cookies.get('refreshToken'))
             console.log(response)
             // config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             // setToken(response.data.accessToken);
@@ -57,7 +60,7 @@ export const Jwt_auth = () => {
         }
         return config;
     }, (error) => {
-        
+        console.log(cookies.get('refreshToken'))
         return Promise.reject(error);
     });
 
