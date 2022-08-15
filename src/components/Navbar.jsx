@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Jwt_auth } from './auth';
 import { Container, Nav, Navbar } from 'react-bootstrap'
+import Cookies from 'universal-cookie';
  
 const Navigation = () => {
     const navigate = useNavigate();
     const [token, , refreshToken, ] = Jwt_auth()
+    const cookies = new Cookies();
 
 
     useEffect(() => {
@@ -15,7 +17,9 @@ const Navigation = () => {
 
     const Logout = async () => {
         try {
-            await axios.delete('https://reyaly-books-backend.herokuapp.com/logout');
+            await axios.delete('https://reyaly-books-backend.herokuapp.com/logout', {
+                refreshToken: cookies.get('refreshToken')
+            });
             if (window.location.href !== "https://reyaly-books.herokuapp.com/") {
                 navigate("/");
             } else {

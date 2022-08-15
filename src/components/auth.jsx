@@ -20,13 +20,13 @@ export const Jwt_auth = () => {
             });
             console.log(response)
             console.log(cookies.get('refreshToken'))
-            // setToken(response.data.accessToken);
-            // const decoded = jwt_decode(response.data.accessToken);
-            // console.log(decoded)
-            // setId(decoded.userId);
-            // setName(decoded.name);
-            // setEmail(decoded.email);
-            // setExpire(decoded.exp);
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            console.log(decoded)
+            setId(decoded.userId);
+            setName(decoded.name);
+            setEmail(decoded.email);
+            setExpire(decoded.exp);
         } catch (error) {
             if (error.response.status !== 401) {
                 console.log(error)
@@ -50,13 +50,13 @@ export const Jwt_auth = () => {
             });
             console.log(cookies.get('refreshToken'))
             console.log(response)
-            // config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            // setToken(response.data.accessToken);
-            // const decoded = jwt_decode(response.data.accessToken);
-            // setId(decoded.userId);
-            // setName(decoded.name);
-            // setEmail(decoded.email);
-            // setExpire(decoded.exp);
+            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setId(decoded.userId);
+            setName(decoded.name);
+            setEmail(decoded.email);
+            setExpire(decoded.exp);
         }
         return config;
     }, (error) => {
