@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Jwt_auth } from "../auth";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { Card, Spinner } from "react-bootstrap";
 import { SearchBar } from "./search";
 
@@ -12,7 +13,6 @@ export const FavList = () => {
   const [loading, setLoading] = useState(true);
 
   const getBooks = async () => {
-    // console.log(userProfile)
     await axiosJWT
       .post("https://reyaly-books-backend.herokuapp.com/fav", {
         user: email,
@@ -74,7 +74,7 @@ export const FavList = () => {
   useEffect(() => {
     refreshToken();
     setTimeout(() => getBooks(), 100);
-    console.log(books);
+    // eslint-disable-next-line
   }, [email]);
 
   return (
@@ -175,6 +175,7 @@ export const FavList = () => {
           </>
         )}
       </Card>
+      <Footer />
     </div>
   );
 };

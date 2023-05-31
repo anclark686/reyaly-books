@@ -1,5 +1,5 @@
-import "./login_register.css"
+import "./login_register.css";
 
-export { Login } from "./login"
-export { Register } from "./register"
-export { Dashboard } from "./dashboard"
+export { Login } from "./login";
+export { Register } from "./register";
+export { Dashboard } from "./dashboard";

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Jwt_auth } from "../auth";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { Card, Spinner } from "react-bootstrap";
 import { SearchBar } from "./search";
 
@@ -25,30 +26,36 @@ export const List = () => {
       });
   };
   const sortBooks = (column, direction) => {
-    let trueList = []
-    let falseList = []
-    if (column !== 'read') {
+    let trueList = [];
+    let falseList = [];
+    if (column !== "read") {
       if (direction === "up") {
-        setBooks([...books].sort((a,b) => {
-          return a[column].localeCompare(b[column])
-        }))
+        setBooks(
+          [...books].sort((a, b) => {
+            return a[column].localeCompare(b[column]);
+          })
+        );
       } else {
-        setBooks([...books].sort((a,b) => {
-          return a[column].localeCompare(b[column])
-        }).reverse())
+        setBooks(
+          [...books]
+            .sort((a, b) => {
+              return a[column].localeCompare(b[column]);
+            })
+            .reverse()
+        );
       }
     } else {
       books.forEach((book) => {
         if (book.read === true) {
-          trueList.push(book)
+          trueList.push(book);
         } else {
-          falseList.push(book)
+          falseList.push(book);
         }
-      })
-      if (direction === 'up') {
-        setBooks(trueList.concat(falseList))
+      });
+      if (direction === "up") {
+        setBooks(trueList.concat(falseList));
       } else {
-        setBooks(falseList.concat(trueList))
+        setBooks(falseList.concat(trueList));
       }
     }
   };
@@ -56,7 +63,7 @@ export const List = () => {
   useEffect(() => {
     refreshToken();
     setTimeout(() => getBooks(), 100);
-    console.log(books);
+    // eslint-disable-next-line
   }, [email]);
 
   return (
@@ -69,7 +76,11 @@ export const List = () => {
 
       <Card className="list-card">
         {loading ? (
-          <Spinner animation="border" variant="info" className="loading-spinner"/>
+          <Spinner
+            animation="border"
+            variant="info"
+            className="loading-spinner"
+          />
         ) : (
           <>
             {books.length > 0 ? (
@@ -79,69 +90,69 @@ export const List = () => {
                     <th scope="col">
                       <p>Title</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("title", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("title", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("title", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("title", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                     <th scope="col">
                       <p>Author</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("author", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("author", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("author", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("author", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                     <th scope="col">
                       <p>Genre</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("genre", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("genre", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("genre", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("genre", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                     <th scope="col">
                       <p>Read</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("read", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("read", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("read", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("read", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                   </tr>
@@ -182,6 +193,7 @@ export const List = () => {
           </>
         )}
       </Card>
+      <Footer />
     </div>
   );
 };

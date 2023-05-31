@@ -1,25 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Quicksand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Quicksand&display=swap");
 
 :root {
   --lightbrown: rgb(117, 103, 76);
   --darkbrown: rgb(68, 59, 44);
-  --beige: #E5E0CE;
-  --blue: #75C8D3;
-  --green: #C3F7BA;
+  --beige: #e5e0ce;
+  --blue: #75c8d3;
+  --green: #c3f7ba;
 }
 
 body {
   margin: 0;
-  font-family: Quicksand, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Quicksand, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-

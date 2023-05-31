@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Jwt_auth } from "../auth";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { Card, Spinner } from "react-bootstrap";
 import { SearchBar } from "./search";
 
@@ -12,7 +13,6 @@ export const WishList = () => {
   const [loading, setLoading] = useState(true);
 
   const getBooks = async () => {
-    // console.log(userProfile)
     await axiosJWT
       .post("https://reyaly-books-backend.herokuapp.com/wish", {
         user: email,
@@ -36,33 +36,45 @@ export const WishList = () => {
   };
 
   const sortBooks = (column, direction) => {
-    if (column !== 'createdAt') {
+    if (column !== "createdAt") {
       if (direction === "up") {
-        setBooks([...books].sort((a,b) => {
-          return a[column].localeCompare(b[column])
-        }))
+        setBooks(
+          [...books].sort((a, b) => {
+            return a[column].localeCompare(b[column]);
+          })
+        );
       } else {
-        setBooks([...books].sort((a,b) => {
-          return a[column].localeCompare(b[column])
-        }).reverse())
+        setBooks(
+          [...books]
+            .sort((a, b) => {
+              return a[column].localeCompare(b[column]);
+            })
+            .reverse()
+        );
       }
     } else {
       if (direction === "up") {
-        setBooks([...books].sort((a,b) => {
-          return new Date(a.createdAt) - new Date(b.createdAt)
-        }))
+        setBooks(
+          [...books].sort((a, b) => {
+            return new Date(a.createdAt) - new Date(b.createdAt);
+          })
+        );
       } else {
-        setBooks([...books].sort((a,b) => {
-          return new Date(a.createdAt) - new Date(b.createdAt);
-        }).reverse())
+        setBooks(
+          [...books]
+            .sort((a, b) => {
+              return new Date(a.createdAt) - new Date(b.createdAt);
+            })
+            .reverse()
+        );
       }
     }
-  }
+  };
 
   useEffect(() => {
     refreshToken();
     setTimeout(() => getBooks(), 100);
-    console.log(books);
+    // eslint-disable-next-line
   }, [email]);
 
   return (
@@ -89,52 +101,52 @@ export const WishList = () => {
                     <th>
                       <p>Title</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("title", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("title", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("title", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("title", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                     <th>
                       <p>Author</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("author", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("author", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("author", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("author", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                     <th>
                       <p>Added On</p>
                       <div className="sort-buttons">
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("createdAt", "up")}
-                      >
-                        &#9650;
-                      </button>
-                      <button
-                        className="sort-button"
-                        onClick={() => sortBooks("createdAt", "down")}
-                      >
-                        &#9660;
-                      </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("createdAt", "up")}
+                        >
+                          &#9650;
+                        </button>
+                        <button
+                          className="sort-button"
+                          onClick={() => sortBooks("createdAt", "down")}
+                        >
+                          &#9660;
+                        </button>
                       </div>
                     </th>
                   </tr>
@@ -164,6 +176,7 @@ export const WishList = () => {
           </>
         )}
       </Card>
+      <Footer />
     </div>
   );
 };
