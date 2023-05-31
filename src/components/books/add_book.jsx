@@ -77,20 +77,20 @@ export const AddBook = () => {
         e.stopPropagation();
       } else {
         console.log("trying here")
-        // try {
-        //   await Axios.post(
-        //     "https://reyaly-books-backend.herokuapp.com/addBook", book
-        //   ).then((res) => {
-        //     console.log(res.data)
-        //     if (res.data === "Your book has been added!"){
-        //       navigate("/details", {state:{ book: book }})
-        //     }
+        try {
+          await Axios.post(
+            "https://reyaly-books-backend.herokuapp.com/addBook", book
+          ).then((res) => {
+            console.log(res.data)
+            if (res.data === "Your book has been added!"){
+              navigate("/details", {state:{ book: book }})
+            }
             
-        //   })
+          })
           
-        // } catch (err) {
-        //   console.log(err)
-        // }
+        } catch (err) {
+          console.log(err)
+        }
       }
   
       setValidated(true);
