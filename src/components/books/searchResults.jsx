@@ -16,7 +16,7 @@ export const SearchResults = () => {
 
       <Card>
         {results.length > 0 ? (
-          <table className="table is-striped is-fullwidth">
+          <table className="is-striped is-fullwidth">
             <thead>
               <tr>
                 <th scope="col">Title</th>
