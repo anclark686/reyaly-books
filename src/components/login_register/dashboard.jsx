@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import { Jwt_auth } from '../auth';
-import { Card } from 'react-bootstrap'
+import { Card, Spinner } from 'react-bootstrap'
 import { SearchBar } from '../books/search';
 
  
@@ -13,6 +13,7 @@ export const Dashboard = () => {
     const [numBooks, setNumBooks] = useState("#")
     const [numUnread, setNumUnread] = useState("#")
     const [numFav, setNumFav] = useState("#")
+    const [loading, setLoading] = useState(true);
     
 
  
@@ -20,31 +21,41 @@ export const Dashboard = () => {
         setTimeout(() => stats(), 1000); 
     }, [email]);
  
-
+    let count = 0
     const stats = async () => {
-        const getBooks = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/books', {
+        await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/books', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`
             }
+        }).then((response) => {
+            setNumBooks(response.data.length)
+            count += 1
         })
-        setNumBooks(getBooks.data.length)
 
-        const getUnread = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/wish', {
+        await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/wish', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`
             }
+        }).then((response) => {
+            setNumUnread(response.data.length)
+            count += 1
         })
-        setNumUnread(getUnread.data.length)
 
-        const getFaves = await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/fav', {
+        await axiosJWT.post('https://reyaly-books-backend.herokuapp.com/fav', {
             user: email,
             headers: {
                 Authorization: `Bearer ${token}`
             }
+        }).then((response) => {
+            setNumFav(response.data.length)
+            count += 1
         })
-        setNumFav(getFaves.data.length)
+        console.log(count)
+        if (count === 3) {
+            setLoading(false)
+        }
     }
 
 
@@ -84,6 +95,10 @@ export const Dashboard = () => {
 
             <Card>
                 <div className="stats">
+                    {loading ? 
+                    <Spinner animation="border" variant="info" className="loading-spinner"/> 
+                    :
+                    <>
                     <div className="dash-card">
                         <h3># of Books</h3>
                         <h5>{numBooks}</h5>
@@ -96,9 +111,8 @@ export const Dashboard = () => {
                         <h3># of Favorites</h3>
                         <h5>{numFav}</h5>
                     </div> 
-                </div>
-                <div className="">
-
+                    </>
+                    }
                 </div>
             </Card>
         </div>

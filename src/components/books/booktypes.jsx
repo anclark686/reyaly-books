@@ -1,4 +1,5 @@
 const bookTypes = [
+    "---Select One---",
     "Action and Adventure",
     "Art & Photography",
     "Biography or Autobiography",

@@ -19,13 +19,34 @@ export const AddBook = () => {
     const [genre, setGenre] = useState("")
     const [notes, setNotes] = useState("")
     const [favorite, setFavorite] = useState(false)
+    const [validated, setValidated] = useState(false);
     const navigate = useNavigate();
     
+    let invalidArray = []
+
     useEffect(() => {
       refreshToken();
     }, []);
 
-    const handleClick = async (e) => {
+    const fieldValidation = () => {
+      if ((title.trim() === "" || title.trim().length <= 1)) {
+        if (!invalidArray.includes("title")) {
+          invalidArray.push("title")
+        }
+      }
+      if ((author.trim() === "" || author.trim().length <= 1)) {
+        if (!invalidArray.includes("author")) {
+          invalidArray.push("author")
+        }
+      }
+      if ((genre === "---Select One---" || genre === "")) {
+        if (!invalidArray.includes("genre")) {
+          invalidArray.push("genre")
+        }
+      }
+    }
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(`
         user: ${email},
@@ -40,29 +61,43 @@ export const AddBook = () => {
 
       const book = {
         user: email,
-            title: title,
-            author: author,
-            read: read,
-            dateRead: dateRead,
-            genre: genre,
-            notes: notes,
-            favorite: favorite,
+        title: title,
+        author: author,
+        read: read,
+        dateRead: dateRead,
+        genre: genre,
+        notes: notes,
+        favorite: favorite,
       }
 
-      try {
-        await Axios.post(
-          "https://reyaly-books-backend.herokuapp.com/addBook", book
-        ).then((res) => {
-          console.log(res.data)
-          if (res.data === "Your book has been added!"){
-            navigate("/details", {state:{ book: book }})
-          }
+      const form = e.currentTarget
+
+      if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        console.log("trying here")
+        // try {
+        //   await Axios.post(
+        //     "https://reyaly-books-backend.herokuapp.com/addBook", book
+        //   ).then((res) => {
+        //     console.log(res.data)
+        //     if (res.data === "Your book has been added!"){
+        //       navigate("/details", {state:{ book: book }})
+        //     }
+            
+        //   })
           
-        })
-        
-      } catch (err) {
-        console.log(err)
+        // } catch (err) {
+        //   console.log(err)
+        // }
       }
+  
+      setValidated(true);
+
+      
+
+
     }
 
     return (
@@ -70,24 +105,33 @@ export const AddBook = () => {
         <Navbar />
         <h1 className="header">Add Book!</h1>
         <Card className="add-card">
-          
-            <Form.Group as={Col} className="form-med">
+        <Form noValidate validated={validated} className="add-form" onSubmit={handleSubmit}>
+            <Form.Group as={Col} className="add-contents">
               <Form.Label>Title</Form.Label>
               <Form.Control 
+                required
                 id="bookTitle" 
                 onChange={(e) => setTitle(e.target.value)}
               />
+              <Form.Control.Feedback type="invalid">
+                Please choose a username.
+              </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} className="form-med">
+            <Form.Group as={Col} className="add-contents">
               <Form.Label>Author</Form.Label>
-              <Form.Control 
+              <Form.Control
+                required 
                 id="bookAuthor" 
                 onChange={(e) => setAuthor(e.target.value)}
               />
+              <Form.Control.Feedback type="invalid">
+                Please choose a username.
+              </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} className="form-med">
+            <Form.Group as={Col} className="add-contents">
               <Form.Label>Genre</Form.Label>
               <Form.Select 
+                required
                 name="bookGenre" 
                 id="bookGenre"
                 onChange={(e) => setGenre(e.target.value)}
@@ -98,8 +142,11 @@ export const AddBook = () => {
                   </option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Please choose a username.
+              </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} className="form-med">
+            <Form.Group as={Col} className="add-contents">
               <Form.Label>Read?</Form.Label>
               <Form.Check 
                 type="switch"
@@ -108,7 +155,7 @@ export const AddBook = () => {
               />
             </Form.Group>
             {read ? 
-              <Form.Group as={Col} className="form-med">
+              <Form.Group as={Col} className="add-contents">
                 <Form.Label>Date Read</Form.Label>
                 <Form.Control 
                   id="dateRead"
@@ -117,7 +164,7 @@ export const AddBook = () => {
                 /> 
               </Form.Group>
             : null}
-            <Form.Group as={Col} className="form-large">
+            <Form.Group as={Col} className="add-notes">
               <Form.Label>Notes</Form.Label>
               <Form.Control 
                 id="bookNotes" 
@@ -126,7 +173,7 @@ export const AddBook = () => {
                 onChange={(e) => setNotes(e.target.value)}
               />
             </Form.Group>
-            <Form.Group as={Col} className="form-med">
+            <Form.Group as={Col} className="add-contents">
               <Form.Label>Favorite?</Form.Label>
               <Form.Check 
                 type="switch"
@@ -134,11 +181,10 @@ export const AddBook = () => {
                 onChange={(e) => setFavorite(e.target.checked)}
               />
             </Form.Group>
-            <Form>
+            
             <Button 
               variant="blue" 
               type="submit" 
-              onClick={handleClick}
             > Submit</Button>
           </Form>
         </Card>
