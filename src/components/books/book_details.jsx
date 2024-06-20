@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 
@@ -26,23 +25,33 @@ export const Details = () => {
   return (
     <div className="book-details">
       <Navbar />
-      <h1 className="header">Book details</h1>
+      <div className="header-container">
+        <h1 className="header">{book.title}</h1>
+      </div>
+
       <Card className="details-card">
-        <h1 id="details-title">
-          <strong>{book.title}</strong>
-        </h1>
         <h4 id="details-author">
-          <strong>By: {book.author}</strong>
+          <strong>By:</strong> {book.author}
         </h4>
         <h5 id="details-genre">
-          {!book.genre ? "Genre: None" : `Genre: ${book.genre}`}
+          {!book.genre ? (
+            <>
+              <strong>Genre:</strong> None
+            </>
+          ) : (
+            <>
+              <strong>Genre: </strong> {book.genre}
+            </>
+          )}
         </h5>
         {book.notes ? (
           <div>
             <h3>
-              <strong>Notes</strong>
+              <strong>Notes:</strong>
             </h3>
-            <p id="details-notes">{book.notes}</p>
+            <div className="notes-container">
+              <p id="details-notes">{book.notes}</p>
+            </div>
           </div>
         ) : null}
         <h5>
@@ -56,7 +65,6 @@ export const Details = () => {
           </Button>
         </Form>
       </Card>
-      <Footer />
     </div>
   );
 };

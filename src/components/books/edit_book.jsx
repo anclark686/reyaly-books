@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Col, Button, Card } from "react-bootstrap";
 import Axios from "axios";
@@ -57,7 +56,7 @@ export const EditBook = () => {
     book.genre = genre ? genre : book.genre;
     book.notes = notes ? notes : book.notes;
     book.favorite = favorite ? favorite : book.favorite;
-    
+
     try {
       await Axios.post("https://reyaly-books-backend.herokuapp.com/edit", {
         id: book.id,
@@ -80,7 +79,10 @@ export const EditBook = () => {
   return (
     <div className="edit-book">
       <Navbar />
-      <h1 className="header">Edit</h1>
+      <div className="header-container">
+        <h1 className="header">Edit</h1>
+      </div>
+
       <Card className="add-card">
         <Form.Group as={Col} className="form-med">
           <Form.Label>Title</Form.Label>
@@ -160,7 +162,6 @@ export const EditBook = () => {
           </Button>
         </Form>
       </Card>
-      <Footer />
     </div>
   );
 };

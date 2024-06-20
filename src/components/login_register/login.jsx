@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./log_reg_nav";
-import Footer from "../Footer";
 import { Form, Button, Card } from "react-bootstrap";
 import Cookies from "universal-cookie";
 
@@ -36,7 +35,9 @@ export const Login = () => {
   return (
     <div className="Login">
       <Navbar />
-      <h1 className="header">Login</h1>
+      <div className="header-container">
+        <h1 className="header">Login</h1>
+      </div>
       <Card>
         <form onSubmit={Auth} className="box">
           <p>{msg}</p>
@@ -71,7 +72,6 @@ export const Login = () => {
           </p>
         </form>
       </Card>
-      <Footer />
     </div>
   );
 };

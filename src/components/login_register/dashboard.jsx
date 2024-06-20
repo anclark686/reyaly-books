@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { Jwt_auth } from "../auth";
 import { Card, Spinner } from "react-bootstrap";
 import { SearchBar } from "../books/search";
@@ -64,8 +63,10 @@ export const Dashboard = () => {
   return (
     <div className="">
       <Navbar />
+      <div className="header-container">
+        <h1 className="header">Welcome Back {name}!</h1>
+      </div>
 
-      <h1 className="header">Welcome Back {name}!</h1>
       <SearchBar />
 
       <div className="dash-container">
@@ -120,7 +121,6 @@ export const Dashboard = () => {
           )}
         </div>
       </Card>
-      <Footer />
     </div>
   );
 };

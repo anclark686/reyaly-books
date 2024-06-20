@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Jwt_auth } from "./auth";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 import { Card } from "react-bootstrap";
 
 const Home = () => {
@@ -16,7 +15,9 @@ const Home = () => {
   return (
     <div className="home">
       <Navbar />
-      <h1 className="header">Reyaly Books</h1>
+      <div className="header-container">
+        <h1 className="header">Reyaly Books</h1>
+      </div>
 
       {!token ? (
         <div className="logged-out-home">
@@ -63,7 +64,9 @@ const Home = () => {
         </div>
       )}
       <Card>
-        <h3 className="header">What is Reyaly Books?</h3>
+        <div className="subheader-container">
+          <h3 className="subheader">What is Reyaly Books?</h3>
+        </div>
         <p>
           Reyaly Books is a place you can go to log and note all of your
           favorite, and not so favorite books. You have the functionality to
@@ -75,7 +78,6 @@ const Home = () => {
         </p>
         <p>~ANC~</p>
       </Card>
-      <Footer />
     </div>
   );
 };

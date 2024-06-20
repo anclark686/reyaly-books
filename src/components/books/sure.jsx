@@ -1,7 +1,6 @@
 import React from "react";
 import Axios from "axios";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 
@@ -40,7 +39,6 @@ export const YouSure = () => {
           </Button>
         </Form>
       </Card>
-      <Footer />
     </div>
   );
 };

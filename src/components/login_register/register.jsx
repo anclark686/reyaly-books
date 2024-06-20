@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./log_reg_nav";
-import Footer from "../Footer";
 import { Form, Button, Card } from "react-bootstrap";
 
 export const Register = () => {
@@ -33,7 +32,10 @@ export const Register = () => {
   return (
     <div className="Register">
       <Navbar />
-      <h1 className="header">Register</h1>
+      <div className="header-container">
+        <h1 className="header">Register</h1>
+      </div>
+
       <Card>
         <Form onSubmit={Register} className="box">
           <p>{msg}</p>
@@ -90,7 +92,6 @@ export const Register = () => {
           </p>
         </Form>
       </Card>
-      <Footer />
     </div>
   );
 };

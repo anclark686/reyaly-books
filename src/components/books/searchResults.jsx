@@ -1,7 +1,6 @@
 import { SearchBar } from "./search";
 import { Card } from "react-bootstrap";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { useLocation, Link } from "react-router-dom";
 
 export const SearchResults = () => {
@@ -10,7 +9,9 @@ export const SearchResults = () => {
   return (
     <div className="search-results">
       <Navbar />
-      <h1 className="header">Search Results</h1>
+      <div className="header-container">
+        <h1 className="header">Search Results</h1>
+      </div>
 
       <SearchBar />
 
@@ -56,7 +57,6 @@ export const SearchResults = () => {
           </div>
         )}
       </Card>
-      <Footer />
     </div>
   );
 };

@@ -43,29 +43,27 @@ const Navigation = () => {
 
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto nav-container">
-                <div>
-                  <Nav.Link className="navbar-item" href="/dashboard">
-                    Dashboard
-                  </Nav.Link>
-                  <Nav.Link className="navbar-item" href="/list">
-                    Book List
-                  </Nav.Link>
-                  <Nav.Link className="navbar-item" href="/favList">
-                    Favorites
-                  </Nav.Link>
-                  <Nav.Link className="navbar-item" href="/wishlist">
-                    Wish List
-                  </Nav.Link>
-                  <Nav.Link className="navbar-item" href="/addBook">
-                    Add Book
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={Logout}
-                    className="button is-light navbar-item"
-                  >
-                    Log Out
-                  </Nav.Link>
-                </div>
+                <Nav.Link className="navbar-item" href="/dashboard">
+                  Dashboard
+                </Nav.Link>
+                <Nav.Link className="navbar-item" href="/list">
+                  Book List
+                </Nav.Link>
+                <Nav.Link className="navbar-item" href="/favList">
+                  Favorites
+                </Nav.Link>
+                <Nav.Link className="navbar-item" href="/wishlist">
+                  Wish List
+                </Nav.Link>
+                <Nav.Link className="navbar-item" href="/addBook">
+                  Add Book
+                </Nav.Link>
+                <Nav.Link
+                  onClick={Logout}
+                  className="button is-light navbar-item"
+                >
+                  Log Out
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </>

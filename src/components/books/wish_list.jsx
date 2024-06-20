@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Jwt_auth } from "../auth";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { Card, Spinner } from "react-bootstrap";
 import { SearchBar } from "./search";
 
@@ -80,8 +79,9 @@ export const WishList = () => {
   return (
     <div className="wish-list">
       <Navbar />
-
-      <h1 className="header">Wish List!</h1>
+      <div className="header-container">
+        <h1 className="header">Wish List</h1>
+      </div>
 
       <SearchBar />
 
@@ -99,54 +99,60 @@ export const WishList = () => {
                 <thead>
                   <tr>
                     <th>
-                      <p>Title</p>
-                      <div className="sort-buttons">
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("title", "up")}
-                        >
-                          &#9650;
-                        </button>
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("title", "down")}
-                        >
-                          &#9660;
-                        </button>
+                      <div className="table-header">
+                        <span className="th-label">Title</span>
+                        <span className="sort-buttons">
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("title", "up")}
+                          >
+                            &#9650;
+                          </button>
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("title", "down")}
+                          >
+                            &#9660;
+                          </button>
+                        </span>
                       </div>
                     </th>
                     <th>
-                      <p>Author</p>
-                      <div className="sort-buttons">
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("author", "up")}
-                        >
-                          &#9650;
-                        </button>
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("author", "down")}
-                        >
-                          &#9660;
-                        </button>
+                      <div className="table-header">
+                        <span className="th-label">Author</span>
+                        <span className="sort-buttons">
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("author", "up")}
+                          >
+                            &#9650;
+                          </button>
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("author", "down")}
+                          >
+                            &#9660;
+                          </button>
+                        </span>
                       </div>
                     </th>
                     <th>
-                      <p>Added On</p>
-                      <div className="sort-buttons">
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("createdAt", "up")}
-                        >
-                          &#9650;
-                        </button>
-                        <button
-                          className="sort-button"
-                          onClick={() => sortBooks("createdAt", "down")}
-                        >
-                          &#9660;
-                        </button>
+                      <div className="table-header">
+                        <span className="th-label">Added On</span>
+                        <span className="sort-buttons">
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("createdAt", "up")}
+                          >
+                            &#9650;
+                          </button>
+                          <button
+                            className="sort-button"
+                            onClick={() => sortBooks("createdAt", "down")}
+                          >
+                            &#9660;
+                          </button>
+                        </span>
                       </div>
                     </th>
                   </tr>
@@ -176,7 +182,6 @@ export const WishList = () => {
           </>
         )}
       </Card>
-      <Footer />
     </div>
   );
 };

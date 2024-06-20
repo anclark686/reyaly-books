@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Form, Col, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import Navbar from "../Navbar";
-import Footer from "../Footer";
 import { Jwt_auth } from "../auth";
 import bookTypes from "./booktypes";
 import { useNavigate } from "react-router-dom";
@@ -24,24 +23,6 @@ export const AddBook = () => {
     refreshToken();
     // eslint-disable-next-line
   }, []);
-
-  // const fieldValidation = () => {
-  //   if (title.trim() === "" || title.trim().length <= 1) {
-  //     if (!invalidArray.includes("title")) {
-  //       invalidArray.push("title");
-  //     }
-  //   }
-  //   if (author.trim() === "" || author.trim().length <= 1) {
-  //     if (!invalidArray.includes("author")) {
-  //       invalidArray.push("author");
-  //     }
-  //   }
-  //   if (genre === "---Select One---" || genre === "") {
-  //     if (!invalidArray.includes("genre")) {
-  //       invalidArray.push("genre");
-  //     }
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,7 +64,10 @@ export const AddBook = () => {
   return (
     <div className="add-book">
       <Navbar />
-      <h1 className="header">Add Book!</h1>
+      <div className="header-container">
+        <h1 className="header">Add Book</h1>
+      </div>
+
       <Card className="add-card">
         <Form
           noValidate
@@ -173,7 +157,6 @@ export const AddBook = () => {
           </Button>
         </Form>
       </Card>
-      <Footer />
     </div>
   );
 };

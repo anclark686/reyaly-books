@@ -35,9 +35,18 @@ h3 {
   align-items: center;
 }
 
-/* .sort-buttons {
-    display: inline;
-} */
+.th-label {
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+.sort-buttons {
+  vertical-align: middle;
+  width:fit-content;
+  display: inline-flex;
+  flex-direction: column;
+  margin: -10px 5px;
+}
 
 .sort-button {
   display: inline;
@@ -70,4 +79,13 @@ h3 {
 
 .loading-spinner {
   margin: 20px auto;
+}
+
+.notes-container {
+  margin: 20px auto;
+  background-color: var(--green);
+  width: 50%;
+  margin: 5px auto 20px auto;
+  padding: 20px;
+  border-radius: 10px;
 }

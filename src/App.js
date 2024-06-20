@@ -1,9 +1,11 @@
-import './App.css';
-
 import { Routes, Route } from "react-router-dom"
 import Home from './components/home';
 import { Login, Register, Dashboard } from "./components/login_register/index"
 import * as books from "./components/books/index"
+import Footer from './components/Footer';
+
+import './App.css';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route path="/sure" element={<books.YouSure />} />
         <Route path="/searchResults" element={<books.SearchResults />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
