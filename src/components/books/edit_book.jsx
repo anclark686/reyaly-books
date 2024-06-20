@@ -68,7 +68,6 @@ export const EditBook = () => {
         notes: book.notes,
         favorite: book.favorite,
       }).then((res) => {
-        console.log(res.data);
         backToDetails();
       });
     } catch (err) {

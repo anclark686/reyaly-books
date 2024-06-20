@@ -30,7 +30,6 @@ export const Jwt_auth = () => {
     } catch (error) {
       if (error.response.status !== 401) {
         console.log(error);
-        console.log(cookies.get("refreshToken"));
       } else {
         navigate("/");
       }
@@ -63,7 +62,6 @@ export const Jwt_auth = () => {
       return config;
     },
     (error) => {
-      console.log(cookies.get("refreshToken"));
       return Promise.reject(error);
     }
   );
