@@ -95,7 +95,7 @@ export const FavList = () => {
         ) : (
           <>
             {books.length > 0 ? (
-              <table className="table is-striped is-fullwidth">
+              <table className="is-striped is-fullwidth">
                 <thead>
                   <tr>
                     <th>
